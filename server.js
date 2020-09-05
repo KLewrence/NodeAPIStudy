@@ -12,13 +12,10 @@ app.use ((req,res,next) => {
     next ();
 });
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-app.get('/lolas', (req, res) => {
-    res.send('Hello Loli!')
-  })
 
+// UI ///////////////////////////////////
+
+app.use ('/', express.static("./public"))
 
 // ROUTERS////////////////////////////////
 const todoRouter  = require ("./routes/todo");
