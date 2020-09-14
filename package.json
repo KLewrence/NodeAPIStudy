@@ -4,7 +4,7 @@
   "description": "api express en node",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage --watchAll",
+    "test": "jest --coverage ",
     "start": "node server.js",
     "dev": "nodemon server.js",
     "cucumber": "node ./node_modules/cucumber/bin/cucumber-js cucumber/features/**.feature --require cucumber"
