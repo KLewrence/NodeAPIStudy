@@ -2,7 +2,7 @@ const {Given, Then} =  require ('cucumber');
 const axios = require('axios');
 const assert = require('assert');
 const yargs = require ('yargs/yargs')(process.argv).argv;
-//const API_URL = process.env.API_URL || 'http://localhost:3001'//'http://3.22.186.4:3000'
+//const API_URL = process.env.API_URL || 'http://localhost:3001'
 console.log(process.argv);
 console.log(yargs);
 let API_URL = yargs.API_URL || 'http://localhost:3001'
