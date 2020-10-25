@@ -28,6 +28,7 @@ pipeline{
             }
         }
         stage ('Deploy CI API'){
+            when { anyOf { branch 'master'} }
             steps{
                 sshagent(credentials:['maquina2']) {
                     sh 'ssh -o StrictHostKeyChecking=no -l ec2-user 3.22.186.4 "cd /home/NodeAPIStudy && sudo git pull && sudo npm install && forever start server.js"'
@@ -35,6 +36,7 @@ pipeline{
             }
         }
         stage ('Run E2E Test'){
+            when { anyOf { branch 'master'} }
             steps{
                 nodejs(nodeJSInstallationName:'Node 14'){
                     sh '''npm run cucumber -- --API_URL http://3.22.186.4:${apiPort}'''
@@ -42,6 +44,7 @@ pipeline{
             }
         }
         stage ('Stop CI API'){
+            when { anyOf { branch 'master'} }
             steps{
                 sshagent(credentials:['maquina2']) {
                     sh 'ssh -o StrictHostKeyChecking=no -l ec2-user 3.22.186.4 "cd /home/NodeAPIStudy && forever stop server.js"'
