@@ -1,5 +1,8 @@
 pipeline{
     agent any
+    environment { 
+        PORT = '3001'
+    }
     stages {
         stage ('Install dependencies'){
             steps{
@@ -25,7 +28,7 @@ pipeline{
         stage ('Run E2E Test'){
             steps{
                 nodejs(nodeJSInstallationName:'Node 14'){
-                    sh 'npm run cucumber -- --API_URL http://3.22.186.4:3001'
+                    sh 'npm run cucumber -- --API_URL http://3.22.186.4:$PORT'
                 }
             }
         }
