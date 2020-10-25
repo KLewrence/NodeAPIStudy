@@ -17,8 +17,8 @@ pipeline{
         }
         stage ('Deploy CI API'){
             steps{
-                sshagent(['maquina2']) {
-                    sh 'pwd'
+                sshagent(credentials:['maquina2']) {
+                    sh 'ssh -o StrictHostKeyChecking=no -l ec2-user 3.22.186.4 pwd'
                 }
             }
         }
