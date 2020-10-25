@@ -29,16 +29,16 @@ pipeline{
                 }
             }
         }
-        /*stage ('Stop CI API'){
+        stage ('Stop CI API'){
             steps{
                 sshagent(credentials:['maquina2']) {
                     sh 'ssh -o StrictHostKeyChecking=no -l ec2-user 3.22.186.4 "cd /home/NodeAPIStudy && forever stop server.js"'
                 }
             }
-        }*/
+        }
     }
     post { 
-        always { 
+        failure { 
             sshagent(credentials:['maquina2']) {
                     sh 'ssh -o StrictHostKeyChecking=no -l ec2-user 3.22.186.4 "cd /home/NodeAPIStudy && forever stop server.js"'
                 }
