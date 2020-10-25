@@ -1,5 +1,5 @@
 pipeline{
-    agent none
+    agent {node: {label:'Node 14'}}
     stages {
         stage ('Install dependencies'){
             steps{
