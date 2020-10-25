@@ -1,9 +1,9 @@
 pipeline{
     agent none
     stages {
-        stage ('stage1'){
+        stage ('Install dependencies'){
             steps{
-                echo 'hello jenkins'
+                sh 'npm install'
             }
         }
     }
