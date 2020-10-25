@@ -15,5 +15,12 @@ pipeline{
                 }
             }
         }
+        stage ('Deploy CI API'){
+            steps{
+                sshagent(['maquina2']) {
+                    sh 'pwd'
+                }
+            }
+        }
     }
 }
