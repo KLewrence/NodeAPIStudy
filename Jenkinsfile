@@ -1,9 +1,17 @@
+def apiPort = ''
+
 pipeline{
     agent any
     environment { 
-        PORT = '3001'
+        PORT_TEST = '3001'
     }
     stages {
+        stage ('Init Environment'){
+             script {
+                    env.apiPort = '3001'
+             }
+
+        }
         stage ('Install dependencies'){
             steps{
                 nodejs(nodeJSInstallationName:'Node 14'){
@@ -28,7 +36,7 @@ pipeline{
         stage ('Run E2E Test'){
             steps{
                 nodejs(nodeJSInstallationName:'Node 14'){
-                    sh '''npm run cucumber -- --API_URL http://3.22.186.4:$PORT'''
+                    sh '''npm run cucumber -- --API_URL http://3.22.186.4:${apiPort}'''
                 }
             }
         }
