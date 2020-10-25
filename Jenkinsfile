@@ -7,10 +7,11 @@ pipeline{
     }
     stages {
         stage ('Init Environment'){
-             script {
+            steps {
+                script {
                     env.apiPort = '3001'
-             }
-
+                }
+            }
         }
         stage ('Install dependencies'){
             steps{
