@@ -1,9 +1,11 @@
 pipeline{
-    agent {label 'Node 14'}
+    agent any
     stages {
         stage ('Install dependencies'){
             steps{
-                sh 'npm install'
+                nodejs(nodeJSInstallationName:'Node 14'){
+                    sh 'npm install'
+                }
             }
         }
     }
