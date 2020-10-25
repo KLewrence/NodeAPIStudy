@@ -8,5 +8,12 @@ pipeline{
                 }
             }
         }
+        stage ('Run Unit Test'){
+            steps{
+                nodejs(nodeJSInstallationName:'Node 14'){
+                    sh 'npm test'
+                }
+            }
+        }
     }
 }
