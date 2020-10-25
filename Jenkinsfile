@@ -28,7 +28,10 @@ pipeline{
         stage ('Run E2E Test'){
             steps{
                 nodejs(nodeJSInstallationName:'Node 14'){
-                    sh 'npm run cucumber -- --API_URL http://3.22.186.4:$PORT'
+                    sh '''
+                        npm run cucumber -- 
+                        --API_URL http://3.22.186.4:$PORT
+                    '''
                 }
             }
         }
