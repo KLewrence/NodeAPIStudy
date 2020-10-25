@@ -18,9 +18,7 @@ pipeline{
         stage ('Deploy CI API'){
             steps{
                 sshagent(credentials:['maquina2']) {
-                    sh 'ssh -o StrictHostKeyChecking=no -l ec2-user 3.22.186.4'
-                    sh 'cd /home/NodeAPIStudy'
-                    sh 'pwd'
+                    sh 'ssh -o StrictHostKeyChecking=no -l ec2-user 3.22.186.4 "cd /home/NodeAPIStudy && sudo git pull && sudo npm install && forever start server.js"'
                 }
             }
         }
