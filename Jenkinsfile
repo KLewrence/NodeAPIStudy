@@ -22,5 +22,19 @@ pipeline{
                 }
             }
         }
+        stage ('Run E2E Test'){
+            steps{
+                nodejs(nodeJSInstallationName:'Node 14'){
+                    sh 'npm run cucumber -- --API_URL http://3.22.186.4:3001'
+                }
+            }
+        }
+        stage ('Stop CI API'){
+            steps{
+                sshagent(credentials:['maquina2']) {
+                    sh 'ssh -o StrictHostKeyChecking=no -l ec2-user 3.22.186.4 "cd /home/NodeAPIStudy && forever stop server.js"'
+                }
+            }
+        }
     }
 }
